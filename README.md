@@ -1,11 +1,9 @@
-<<<<<<< HEAD
-# FTPAnon
-Anonymous credential detector for FTP
-=======
 # PyFTPAnon
-Lightweight anonymous credential detector 
+Lightweight anonymous credential detector who work with the build-in python3 library called ftplib
 ### Windows
 Not test
+
+<br>
 
 ### Linux
 - You need python3 on your computer 
@@ -33,4 +31,3 @@ chmod u+x ./main.py
 <br>
 
 > ⚠️ : The output option doesn't work now 
->>>>>>> fbcc285 (First commit)
