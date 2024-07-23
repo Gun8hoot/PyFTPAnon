@@ -1,8 +1,7 @@
 #!/bin/env python3
 
-import argparse, os, sys, subprocess
+import argparse, os, sys
 from ftplib import FTP, error_perm
-from scapy import *
 
 #   COLOR CLASS
 class color():
@@ -11,7 +10,6 @@ class color():
     yellow = "\x1b[33m"
     purple = "\x1b[38;5;5m"
     # ---
-    underline = "\x1b[4m"
     reset = "\x1b[00m"
 
 #   BANNER
