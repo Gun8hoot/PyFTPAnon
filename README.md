@@ -28,7 +28,7 @@ sudo python3 ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE}
 chmod u+x ./main.py
 sudo ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE }
 ```
-> To attack system on your network you dont need to sudo the script
+> To attack system on your network you dont need sudo
 
 <br>
 
