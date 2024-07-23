@@ -23,11 +23,13 @@ cd ./PyFTPAnon
 - Execute the script (2 possibilities)
 ```shell 
 # 1st
-python3 ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE}
+sudo python3 ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE}
 # 2nd
 chmod u+x ./main.py
-./main.py -i {IP ADDRESS} -o {NAME OF THE FILE }
+sudo ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE }
 ```
+> To attack system on your network you dont need to sudo the script
+
 <br>
 
 > ⚠️ : The output option doesn't work now 
