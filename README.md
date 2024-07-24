@@ -1,11 +1,9 @@
 # PyFTPAnon
-Lightweight anonymous credential detector who work with the build-in python3 library called ftplib
-### Windows
+Lightweight anonymous credential detector who work with the build-in python3 library called ftplib. If the victim have anonymous connection settings, the script will list all file on the ftp root directory.
+> ⚠️ **Notes :** The output option is currently not available
+## Windows
 Not test
-
-<br>
-
-### Linux
+## Linux
 - You need python3 on your computer 
 ```shell
 sudo apt install python3 # on debian
@@ -28,8 +26,7 @@ sudo python3 ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE}
 chmod u+x ./main.py
 sudo ./main.py -i {IP ADDRESS} -o {NAME OF THE FILE }
 ```
-> To attack system on your network you dont need sudo
+> 💡 **Notes :**  To attack VM host in your computer you didn't need ***sudoers privileges***
 
-<br>
-
-> ⚠️ : The output option doesn't work now 
+---
+ 
