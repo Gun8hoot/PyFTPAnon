@@ -1,7 +1,8 @@
 #!/bin/env python3
 
-import argparse, os, sys
 from ftplib import FTP, error_perm
+from scapy import *
+import argparse, os, sys
 
 #   COLOR CLASS
 class color():
@@ -27,18 +28,25 @@ parser = argparse.ArgumentParser(prog="FTP_ANON")
 parser.add_argument('-i', '--ip', dest='ip', help=f'[{color.red}REQUIRED{color.reset}] Specify the ip address', required=True)
 parser.add_argument('-o', '--output', dest='file', help=f'[{color.yellow}OPTIONAL{color.reset}] Specify the file output', required=False)
 args = parser.parse_args()
-#   ---
+#   --- 
 i_p = args.ip
-out_put = args.file # TODO
+out_put = None #args.file TODO
+#   ---
 
 
 #   FUNCTION
+def output_file(aaa):
+    path = "./"
+    filename = strftime("FTPAnonScan %H:%M:%S %d %m %Y.txt")
+    f = open(filename, w+x)
+    f.write(aaa)
+    
 def pinging(ip):
     print("\nTODO\n")
     pass
 
 def connect(ip,file):
-    if file != None:
+    if file != None or file == None:
         print(f"{color.red}[!] The output option is currently not available.{color.reset}")
     else:
         pass
@@ -54,6 +62,7 @@ def connect(ip,file):
                 print(f"{color.yellow}[+] Files & directory on the FTP server")
                 ftp.dir()
                 ftp.quit()
+            return
         except error_perm:
             print(f"{color.red}[!] System up, but anonymous login seems not works {color.reset}\n")
     except KeyboardInterrupt:
@@ -63,6 +72,6 @@ def connect(ip,file):
 #   MAIN
 if __name__ == '__main__':
     print(color.purple + banner + color.reset)
-    connect(i_p, out_put)
+    aaa = connect(i_p, out_put)
 else:
     print(f"{color.red}[!] FATAL_ERROR{color.reset}")
