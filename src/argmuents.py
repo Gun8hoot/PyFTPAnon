@@ -16,4 +16,9 @@ def arguments():
         count = count + 1
 
     if __ip__ != None:
-        return __ip__, __port__, __output__
+        if __output__ == None:
+            return __ip__, __port__, __output__
+        elif __output__ != None:
+            from src.logsCreation import log
+            log(__output__)
+            return __ip__, __port__, __output__
