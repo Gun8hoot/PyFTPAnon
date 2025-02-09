@@ -12,12 +12,10 @@ def scan(IP, PORT, f):
             ftp.connect(IP, timeout=5)
             RESPONSE = ftp.login(USR, PWD)
             if RESPONSE == "230 Login successful.":
-                f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Anonymous login work")
+                f.writelines(f"[{time.strftime('%d/%m/%Y')}] Anonymous login work")
                 print(f"{color.green}\n[!] System up & anonymous login works {color.reset}")
                 print(f"{color.yellow}[+] Files & directory on the FTP server")
                 f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Listing file on the root of the ftp server: \n")
-                ftp.retrlines('NLST')
-                print()
                 ftp.dir()
                 ftp.quit()
                 f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Scan successfully done")

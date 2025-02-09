@@ -7,6 +7,6 @@ def checkVersion():
     r = str(r.content).replace('b', '')
     r = str(r).replace("'", '')
     if r != v:
-        print('[!] An update is available')
+        print('\x1b[38;5;184m[!] An update is available\x1b[0m')
     else:
         pass
