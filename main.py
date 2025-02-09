@@ -7,6 +7,7 @@ from src.argmuents import arguments
 from src.FTPScan import scan
 from src.getHelp import getHelp
 from src.checkVersion import checkVersion
+from src.logsCreation import log
 
 # --- BANNER ---
 banner = r"""______ ___________  ___                    
@@ -20,24 +21,18 @@ banner = r"""______ ___________  ___
 
 # --- RUN ---
 def main():
-    try:
-        print(color.purple , banner, color.reset)
-        IP, PORT, PATH = arguments()
-        if PATH != None:
-            f = open(PATH, 'w')
-        elif PATH == None:
-            pass
-        checkVersion()
-        isFinish = scan(IP, PORT, PATH)
-        if isFinish == 0:
-            f.write(f"[{time.strftime('%d/%m/%Y')}] Scan finish!")
-            print(f"{color.green}[+] Scan succesfully done {color.reset}")
-        else:
-            f.write(f"[{time.strftime('%d/%m/%Y')}] ERROR")
-            print("[!] Wwhoops, somethings goes wrong")
-    except:
-        f.write(f"[{time.strftime('%d/%m/%Y')}] Enter a correct IP address")
-        print(color.red, "[!] You need to specify the IP address to attack", color.reset)
+    global LOG
+    print(color.purple , banner, color.reset)
+    IP, PORT, PATH = arguments()
+    LOG = log(PATH, banner)
+    checkVersion()
+    isFinish = scan(IP, PORT, LOG)
+    if isFinish == 0 or isFinish == 1:
+        LOG.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Scan succesfully done")
+        sys.exit(0)
+    else:
+        LOG.writelines(f"\n[{time.strftime('%d/%m/%Y')}] ERROR")
+        print("[!] Wwhoops, somethings goes wrong")
         sys.exit(0)
     
 if __name__ == "__main__":

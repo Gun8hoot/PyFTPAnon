@@ -16,9 +16,7 @@ def arguments():
         count = count + 1
 
     if __ip__ != None:
-        if __output__ == None:
             return __ip__, __port__, __output__
-        elif __output__ != None:
-            from src.logsCreation import log
-            log(__output__)
-            return __ip__, __port__, __output__
+    elif __ip__ == None:
+        print(color.red, "[!] You need to specify the IP address to attack", color.reset)
+        sys.exit(0)

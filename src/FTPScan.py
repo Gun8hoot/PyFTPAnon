@@ -2,33 +2,33 @@ from ftplib import FTP, error_perm
 from src.color import color
 import sys, os, time
 
-def scan(IP, PORT, OUTPUT):
-    if OUTPUT == None:
-        isPath = True
-    else:
-        isPath = False
+def scan(IP, PORT, f):
 
     USR = PWD = "anonymous"
     ftp = FTP()
-    f = open(PATH, 'w')
-
+    arr = []
     try:
         try:
             ftp.connect(IP, timeout=5)
             RESPONSE = ftp.login(USR, PWD)
             if RESPONSE == "230 Login successful.":
-                f.write(f"[{time.strftime('%d/%m/%Y')}] Anonymous login work")
+                f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Anonymous login work")
                 print(f"{color.green}\n[!] System up & anonymous login works {color.reset}")
                 print(f"{color.yellow}[+] Files & directory on the FTP server")
-                f.write(f"[{time.strftime('%d/%m/%Y')}] Listing file on the root of the ftp server: ")
-                f.write(ftp.dir())
+                f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Listing file on the root of the ftp server: \n")
+                ftp.retrlines('NLST')
+                print()
                 ftp.dir()
                 ftp.quit()
-            return 0
+                f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Scan successfully done")
+                return 0
+                
         except error_perm:
-            f.write(f"[{time.strftime('%d/%m/%Y')}] Anonymous login does not work, try something else")
+            f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] Anonymous login doesn't work, try something else.")
             print(f"{color.red}[!] System up, but anonymous login seems not works {color.reset}")
+            return 1
+
     except KeyboardInterrupt:
         print(f"\n{color.red}[!] Keyboard Interrupt keys pressed ...{color.reset}")
-        f.write(f"[{time.strftime('%d/%m/%Y')}] CTRL+C press")
+        f.writelines(f"\n[{time.strftime('%d/%m/%Y')}] CTRL+C press")
         sys.exit(0)
